@@ -1,0 +1,28 @@
+.grid {
+    width: 606px;
+    height: 606px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.square {
+    width: 200px;
+    height: 200px;
+    border: solid black 1px;
+}
+
+.mole {
+    background-color: blue;
+}
+
+.start-button {
+    font-size: larger;
+}
+
+.headings {
+    white-space: nowrap;
+}
+
+h2 {
+    display: inline-block;
+}
