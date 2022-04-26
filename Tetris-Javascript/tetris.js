@@ -219,4 +219,8 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(timerID)
         }
     }
+
+    function sayHello() {
+        print("Hello")
+    }
 })
