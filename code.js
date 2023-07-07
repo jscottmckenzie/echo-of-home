@@ -18,18 +18,26 @@ const mouse = {
 canvas.addEventListener('mousedown', function(event) {
     mouse.x = event.x;
     mouse.y = event.y;
-    for (let i = 0; i < 300; i++) {
+    for (let i = 0; i < 250; i++) {
         particlesArray.push(new Firework());
     }
 });
 
-// canvas.addEventListener('mousemove', function(event) {
-//     mouse.x = event.x;
-//     mouse.y = event.y;
-//     for (let i = 0; i < 10; i++) {
-//         particlesArray.push(new Particle());
-//     }
-// });
+window.addEventListener('keydown', function(e) {
+    
+    if (e.key === " ") {
+        ctx.fillStyle = 'hsl(' + hue + ', 100%, 50%)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+})
+
+canvas.addEventListener('mousemove', function(event) {
+    mouse.x = event.x;
+    mouse.y = event.y;
+    for (let i = 0; i < 10; i++) {
+        particlesArray.push(new Particle());
+    }
+});
 
 class Particle {
     constructor() {
@@ -57,14 +65,14 @@ class Firework {
     constructor() {
         this.x = mouse.x;
         this.y = mouse.y;
-        this.size = 10;
-        this.speedX = Math.random() * 3 - 1.5;
-        this.speedY = Math.random() * 3 - 1.5;
+        this.size = 8;
+        this.speedX = Math.random() * 10 - 5;
+        this.speedY = Math.random() * 10 - 5;
         this.color = 'hsl(' + hue + ', 100%, 50%)';
     }
     update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
+        this.x += (this.speedX * 0.95);
+        this.y += (this.speedY * 0.95)
         if (this.size > 0.2) this.size -= 0.1;
     }
     draw() {
@@ -98,13 +106,13 @@ function handleParticles() {
 }
 
 function animate() {
-    // ctx.clearRect(canvas.width, canvas.height, 0, 0);
-    ctx.fillStyle = 'rgba(0,0,0,0.02)';
+    ctx.clearRect(canvas.width, canvas.height, 0, 0);
+    // ctx.fillStyle = 'rgba(0,0,0,9)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     handleParticles();
     hue += 2;
     requestAnimationFrame(animate);
-    
 }
+
 
 animate();
